@@ -1,8 +1,10 @@
 import { Elysia, t } from "elysia";
 import { createDb } from './db';
 import { faker } from "@faker-js/faker";
+import swagger from "@elysiajs/swagger";
 
 const app = new Elysia()
+  .use(swagger())
   .decorate("db", createDb())
   .get("/", () => "Hello Elysia")
   .get("/seed", ({db}) => {
